@@ -12,7 +12,9 @@ var Schema = mongoose.Schema;
 
 mongoose.connect('mongodb://localhost/chembros');
 
-mongoose.model('Employee', new Schema({"gender": String, "salary": Number, "years": Number, "name": String, "title": String, "rank":Number }, {collection: 'employees'}));
+mongoose.model('Employee', new Schema({"gender": String, "salary": Number, "years": Number, "name": String,
+                                        "title": String, "rank": Number },
+                                         {collection: 'employees'}));
 
 var Employee = mongoose.model('Employee');
 
