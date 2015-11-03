@@ -12,22 +12,32 @@ var Schema = mongoose.Schema;
 
 mongoose.connect('mongodb://localhost/chembros');
 
+
 mongoose.model('Employee', new Schema({"gender": String, "salary": Number, "years": Number, "name": String,
         "title": String, "rank": Number },
     {collection: 'employees'}));
 
 var Employee = mongoose.model('Employee');
 
+//var tempEmployee = {"gender" : "female", "salary": 50000, "years" : 2, "name" :"Dana", "title" : "Dev", "rank": 2};
+
 router.get('/data', function(req, res){
-    //handle populating ajax
+
+    //Employee.find({}, function(err , data){
+    //    if(err) console.log(err);
+    //    res.send(data);
+    //});
+    res.send('get route accessed');
 });
 
 router.post('/data', function(req, res){
     //handle promoting ajax
+    res.send('post route accessed');
 });
 
 router.delete('/data', function(req, res){
-    //handle delete ajax
+    //delete ajax
+    res.send('delete route accessed');
 });
 
 
