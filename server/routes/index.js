@@ -19,7 +19,7 @@ mongoose.model('Employee', new Schema({"gender": String, "salary": Number, "year
 
 var Employee = mongoose.model('Employee');
 
-var tempEmployee = {"gender" : "female", "salary": 50000, "years" : 2, "name" :"Dana", "title" : "Dev", "rank": 2};
+var tempEmployee = [{"gender" : "female", "salary": 50000, "years" : 2, "name" :"Dana", "title" : "Dev", "rank": 2}];
 
 router.get('/data', function(req, res){
 
