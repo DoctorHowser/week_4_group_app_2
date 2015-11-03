@@ -23,7 +23,7 @@ app.set("port", process.env.PORT || 5000);
 //app.use(bodyParser.urlencoded({expanded: true}));
 
 
-app.get("/", index);
+app.use("/", index);
 
 
 app.listen(app.get("port"), function(){
