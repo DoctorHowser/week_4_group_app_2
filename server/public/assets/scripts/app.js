@@ -1,3 +1,7 @@
+var totalEmployees = 0,
+    totalSalary = 0,
+    totalYears = 0;
+
 $(document).ready(function() {
     console.log("Hello");
     pageInit();
@@ -15,7 +19,7 @@ function pageInit() {
 
 function appendDom(data) {
     addEmployees(data);
-//    addTotals(data);
+    addTotals(data);
 }
 
 function addEmployees(data) {
@@ -34,17 +38,25 @@ function addEmployees(data) {
             "<button class='promote btn btn-primary' data-id='" +
                 data[i]._id + "'>Promote</button> " +
             "</div>";
+            totalSalary += data[i].salary;
+            totalYears += data[i].years;
+            totalEmployees = data.length;
+            $("#peopleContainer").append(el);
         }
-    $("#peopleContainer").append(el);
+
 }
-//
-//function addTotals(data) {
-//    $("#averagesContainer").empty();
-//    //average employee salary
-//    //total employee salary
-//    //average employee years
-//    //total employee years
-//    $("#averagesContainer").append();
-//
-//}
+
+function addTotals(data) {
+    $("#averagesContainer").empty();
+    var ep = "<div class='well col-lg-3'>" +
+            "<h3>Averages: </h3>" +
+            "<p>Average Salary: " + (totalSalary/totalEmployees) + "</p>" +
+            "<p>Average Years at Chem Bros: " + (totalYears/totalEmployees) + "</p>" +
+            "<h3>Totals: </h3>" +
+            "<p>Total Salary: " + totalSalary + "</p>" +
+            "<p>Total Years at Chem Bros: " + totalYears + "</p>" +
+            "</div>";
+    $("#averagesContainer").append(ep);
+
+}
 
