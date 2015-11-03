@@ -19,8 +19,8 @@ mongoose.model('Employee', new Schema({"gender": String, "salary": Number, "year
 var Employee = mongoose.model('Employee');
 
 app.set("port", process.env.PORT || 5000);
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({expanded: true}));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({expanded: true}));
 
 
 app.get("/", index);
