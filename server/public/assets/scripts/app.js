@@ -21,11 +21,12 @@ function pageInit() {
 function appendDom(data) {
     addEmployees(data);
     addTotals(data);
+}
 
 function clickListeners() {
     $("#peopleContainer").on('click', '.delete', deleteEmployee);
-    $("#peopleContainer").on('click', '.freeze', freezeEmployee);
-    $("#peopleContainer").on('click', 'promote', promoteEmployee);
+    //$("#peopleContainer").on('click', '.freeze', freezeEmployee);
+    //$("#peopleContainer").on('click', 'promote', promoteEmployee);
 }
 
 function addEmployees(data) {
@@ -70,13 +71,6 @@ function deleteEmployee() {
         type: "DELETE",
         url: '/data',
         success: pageInit()
-    })
+    });
 }
 
-function freezeEmployee() {
-
-}
-
-function promoteEmployee() {
-
-}

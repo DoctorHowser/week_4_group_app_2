@@ -7,6 +7,9 @@ var router = express.Router();
 var path = require('path');
 var bodyParser = require('body-parser');
 
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({expanded: true}));
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -34,9 +37,11 @@ router.post('/data', function(req, res){
 });
 
 router.delete('/data', function(req, res){
-    //Employee.FindByIdAndDelete({"_id", : req.body.id}, function(err, data){
-    //if(err) console.log(err);
-    //res.send('deleted key :', data);
+    console.log(req);
+    //Employee.FindByIdAndDelete({"_id" : req.body.id}, function(err, data) {
+    //    if (err) console.log(err);
+    //    res.send('deleted key :', data);
+    //});
     res.send('deleted key :');
 });
 
