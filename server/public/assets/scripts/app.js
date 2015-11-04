@@ -28,7 +28,11 @@ function clickListeners() {
     $("#peopleContainer").on('click', '.freeze', freezeEmployee);
 //    $("#peopleContainer").on('click', 'promote', promoteEmployee);
 }
-
+function clickListenersOff() {
+    $("#peopleContainer").off('click', '.delete', deleteEmployee);
+    $("#peopleContainer").off('click', '.freeze', freezeEmployee);
+//    $("#peopleContainer").on('click', 'promote', promoteEmployee);
+}
 function addEmployees(data) {
     $("#peopleContainer").empty();
     totalSalary = 0;
@@ -36,7 +40,7 @@ function addEmployees(data) {
     totalEmployees = 0;
 
     for(var i = 0; i < data.length; i++) {
-        var el = "<div class='employee well col-md-3'><h3>Employee: </h3>" +
+        var el = "<div class='employee well col-md-12'><h3>Employee: </h3>" +
             "<p>Name: " + data[i].name + "</p>" +
             "<p>Salary: " + data[i].salary + "</p>" +
             "<p>Years of Service: " + data[i].years + "</p>" +
@@ -57,8 +61,8 @@ function addEmployees(data) {
 
 function addTotals() {
     $("#averagesContainer").empty();
-    var averageSalary = (totalSalary/totalEmployees),
-        averageYears = (totalYears/totalEmployees);
+    var averageSalary = (totalSalary/totalEmployees).toFixed(2),
+        averageYears = (totalYears/totalEmployees).toFixed(2);
     var ep = "<div class='col-lg-12 jumbotron'>" +
             "<div class='well col-lg-6'>" +
                 "<h3>Averages: </h3>" +
@@ -83,19 +87,20 @@ function deleteEmployee() {
         url: '/data',
         data: deletedId,
         success: function(){
+            clickListenersOff();
             pageInit();
         }
     })
 }
 
 function freezeEmployee() {
+    console.log('frozen');
 
     var frozenId = {"salary" : $(this).data('salary'), "years" : $(this).data('years')};
 
-    $(this).parent().toggleClass('frozenActive');
-    console.log($(this).parent().hasClass('frozenActive'));
+    $(this).closest('.employee').toggleClass('frozenActive');
 
-    if ($(this).parent().hasClass('frozenActive')) {
+    if ($(this).closest('.employee').hasClass('frozenActive')) {
         totalSalary -= frozenId.salary;
         totalYears -= frozenId.years;
         totalEmployees--;
