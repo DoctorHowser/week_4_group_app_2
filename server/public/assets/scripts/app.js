@@ -36,7 +36,7 @@ function addEmployees(data) {
     totalEmployees = 0;
 
     for(var i = 0; i < data.length; i++) {
-        var el = "<div class='well col-md-3'><h3>Employee: </h3>" +
+        var el = "<div class='employee well col-md-3'><h3>Employee: </h3>" +
             "<p>Name: " + data[i].name + "</p>" +
             "<p>Salary: " + data[i].salary + "</p>" +
             "<p>Years of Service: " + data[i].years + "</p>" +
@@ -86,7 +86,7 @@ function deleteEmployee() {
 
 function freezeEmployee() {
     var frozenId = {"id" : $(this).data("id")};
-    $(this).toggleClass('frozenActive');
+    $(this).parent().toggleClass('frozenActive');
     totalSalary -= frozenId.salary;
     totalYears -= frozenId.years;
     addTotals();

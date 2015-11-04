@@ -1,3 +1,7 @@
 .frozenActive {
-    background: lightgrey;
+    background: blue;
+}
+
+.frozenActive .btn {
+    background: lightgray;
 }
