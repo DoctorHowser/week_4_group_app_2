@@ -22,7 +22,6 @@ mongoose.model('Employee', new Schema({"gender": String, "salary": Number, "year
 
 var Employee = mongoose.model('Employee');
 
-
 router.get('/data', function(req, res) {
 
     Employee.find({}, function (err, data) {
@@ -38,10 +37,10 @@ router.post('/data', function(req, res){
 
 router.delete('/data', function(req, res){
     console.log(req);
-    //Employee.FindByIdAndDelete({"_id" : req.body.id}, function(err, data) {
-    //    if (err) console.log(err);
-    //    res.send('deleted key :', data);
-    //});
+    Employee.findByIdAndRemove({"_id" : req.body.id}, function(err, data) {
+        if (err) console.log(err);
+        res.send('deleted key :', data);
+    });
     res.send('deleted key :');
 });
 

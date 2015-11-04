@@ -25,12 +25,15 @@ function appendDom(data) {
 
 function clickListeners() {
     $("#peopleContainer").on('click', '.delete', deleteEmployee);
-    //$("#peopleContainer").on('click', '.freeze', freezeEmployee);
-    //$("#peopleContainer").on('click', 'promote', promoteEmployee);
+//    $("#peopleContainer").on('click', '.freeze', freezeEmployee);
+//    $("#peopleContainer").on('click', 'promote', promoteEmployee);
 }
 
 function addEmployees(data) {
     $("#peopleContainer").empty();
+    totalSalary = 0;
+    totalYears = 0;
+    totalEmployees = 0;
 
     for(var i = 0; i < data.length; i++) {
         var el = "<div class='well col-md-3'><h3>Employee: </h3>" +
@@ -50,7 +53,6 @@ function addEmployees(data) {
             totalEmployees = data.length;
             $("#peopleContainer").append(el);
         }
-
 }
 
 function addTotals() {
@@ -80,6 +82,12 @@ function deleteEmployee() {
     })
 }
 
-
+//function freezeEmployee() {
+//
+//}
+//
+//function promoteEmployee() {
+//
+//}
 
 
