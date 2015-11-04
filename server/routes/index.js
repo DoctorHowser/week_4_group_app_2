@@ -36,12 +36,14 @@ router.post('/data', function(req, res){
 });
 
 router.delete('/data', function(req, res){
-    console.log(req);
+    //console.log(req);
+
     Employee.findByIdAndRemove({"_id" : req.body.id}, function(err, data) {
         if (err) console.log(err);
         res.send('deleted key :', data);
     });
-    res.send('deleted key :');
+
+    //res.send('deleted key :');
 });
 
 
