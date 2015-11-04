@@ -13,6 +13,7 @@ function pageInit() {
         url: "/data",
         success: function (data) {
             appendDom(data);
+            clickListeners();
         }
     });
 }
@@ -20,13 +21,18 @@ function pageInit() {
 function appendDom(data) {
     addEmployees(data);
     addTotals(data);
+
+function clickListeners() {
+    $("#peopleContainer").on('click', '.delete', deleteEmployee);
+    $("#peopleContainer").on('click', '.freeze', freezeEmployee);
+    $("#peopleContainer").on('click', 'promote', promoteEmployee);
 }
 
 function addEmployees(data) {
     $("#peopleContainer").empty();
 
     for(var i = 0; i < data.length; i++) {
-        var el = "<div class='well col-md-3'>Employee: " +
+        var el = "<div class='well col-md-3'><h3>Employee: </h3>" +
             "<p>Name: " + data[i].name + "</p>" +
             "<p>Salary: " + data[i].salary + "</p>" +
             "<p>Years of Service: " + data[i].years + "</p>" +
@@ -46,7 +52,7 @@ function addEmployees(data) {
 
 }
 
-function addTotals(data) {
+function addTotals() {
     $("#averagesContainer").empty();
     var ep = "<div class='well col-lg-3'>" +
             "<h3>Averages: </h3>" +
@@ -60,3 +66,18 @@ function addTotals(data) {
 
 }
 
+function deleteEmployee() {
+    $.ajax({
+        type: "DELETE",
+        url: '/data',
+        success: pageInit()
+    })
+}
+
+function freezeEmployee() {
+
+}
+
+function promoteEmployee() {
+
+}
