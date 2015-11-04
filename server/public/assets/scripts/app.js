@@ -2,7 +2,7 @@ var totalEmployees = 0,
     totalSalary = 0,
     totalYears = 0;
 
-$(document).ready(function() {
+$(document).ready(function(){
     console.log("Hello");
     pageInit();
 });
@@ -25,7 +25,7 @@ function appendDom(data) {
 
 function clickListeners() {
     $("#peopleContainer").on('click', '.delete', deleteEmployee);
-//    $("#peopleContainer").on('click', '.freeze', freezeEmployee);
+    $("#peopleContainer").on('click', '.freeze', freezeEmployee);
 //    $("#peopleContainer").on('click', 'promote', promoteEmployee);
 }
 
@@ -57,10 +57,12 @@ function addEmployees(data) {
 
 function addTotals() {
     $("#averagesContainer").empty();
+    var averageSalary = (totalSalary/totalEmployees),
+        averageYears = (totalYears/totalEmployees);
     var ep = "<div class='well col-lg-3'>" +
             "<h3>Averages: </h3>" +
-            "<p>Average Salary: " + (totalSalary/totalEmployees) + "</p>" +
-            "<p>Average Years at Chem Bros: " + (totalYears/totalEmployees) + "</p>" +
+            "<p>Average Salary: " + averageSalary  + "</p>" +
+            "<p>Average Years at Chem Bros: " + averageYears + "</p>" +
             "<h3>Totals: </h3>" +
             "<p>Total Salary: " + totalSalary + "</p>" +
             "<p>Total Years at Chem Bros: " + totalYears + "</p>" +
@@ -82,10 +84,14 @@ function deleteEmployee() {
     })
 }
 
-//function freezeEmployee() {
-//
-//}
-//
+function freezeEmployee() {
+    var frozenId = {"id" : $(this).data("id")};
+    $(this).toggleClass('frozenActive');
+    totalSalary -= frozenId.salary;
+    totalYears -= frozenId.years;
+    addTotals();
+}
+
 //function promoteEmployee() {
 //
 //}
