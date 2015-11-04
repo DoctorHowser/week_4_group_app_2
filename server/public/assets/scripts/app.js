@@ -44,7 +44,7 @@ function addEmployees(data) {
             "<button class='delete btn btn-danger' data-id='" +
                 data[i]._id + "'>Delete</button> " +
             "<button class='freeze btn btn-warning' data-salary='" +
-                data[i].salary + " data-years='" + data[i].years + "'>Freeze</button> " +
+                data[i].salary + "' data-years='" + data[i].years + "'>Freeze</button> " +
             "<button class='promote btn btn-primary' data-id='" +
                 data[i]._id + "'>Promote</button> " +
             "</div>";
@@ -85,11 +85,12 @@ function deleteEmployee() {
 }
 
 function freezeEmployee() {
-    var frozenId = {"salary" : $(this).data("salary"), "years" : $(this).data("years")};
-    $(this).parent().toggleClass('frozenActive');
-    totalSalary -= frozenId.salary;
-    totalYears -= frozenId.years;
-    addTotals();
+    var frozenId = {"salary" : $(this).data('salary'), "years" : $(this).data('years')};
+    console.log(frozenId);
+    //$(this).parent().toggleClass('frozenActive');
+    //totalSalary -= frozenId.salary;
+    //totalYears -= frozenId.years;
+    //addTotals();
 }
 
 //function promoteEmployee() {
