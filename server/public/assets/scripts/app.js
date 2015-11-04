@@ -59,8 +59,7 @@ function addTotals() {
             "<p>Average Salary: " + (totalSalary/totalEmployees) + "</p>" +
             "<p>Average Years at Chem Bros: " + (totalYears/totalEmployees) + "</p>" +
             "<h3>Totals: </h3>" +
-            "<p>Total Salary: " + totalSalary + "</p>" +
-            "<p>Total Years at Chem Bros: " + totalYears + "</p>" +
+            "<p>Total Salary: " + totalSalary + "</p>" + "<p>Total Years at Chem Bros: " + totalYears + "</p>" +
             "</div>";
     $("#averagesContainer").append(ep);
 
