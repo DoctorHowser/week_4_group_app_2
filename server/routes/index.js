@@ -19,14 +19,13 @@ mongoose.model('Employee', new Schema({"gender": String, "salary": Number, "year
 
 var Employee = mongoose.model('Employee');
 
-var tempEmployee = [{"gender" : "female", "salary": 50000, "years" : 2, "name" :"Dana", "title" : "Dev", "rank": 2}];
 
-router.get('/data', function(req, res){
+router.get('/data', function(req, res) {
 
-    //Employee.find({}, function(err , data){
-    //    if(err) console.log(err);
-    //    res.send(data);
-    res.send(tempEmployee);
+    Employee.find({}, function (err, data) {
+        if (err) console.log(err);
+        res.send(data);
+    });
 });
 
 router.post('/data', function(req, res){
@@ -35,10 +34,10 @@ router.post('/data', function(req, res){
 });
 
 router.delete('/data', function(req, res){
-    //Employee.FindByIdAndDelete({"_id", : req.body.something}, function(err, data){
+    //Employee.FindByIdAndDelete({"_id", : req.body.id}, function(err, data){
     //if(err) console.log(err);
-    //res.send(data);
-    res.send('delete route accessed');
+    //res.send('deleted key :', data);
+    res.send('deleted key :');
 });
 
 
