@@ -1,7 +1,11 @@
 .frozenActive {
-    background: blue;
+    background: #54e1e6;
 }
 
 .frozenActive .btn {
     background: lightgray;
+}
+
+.employee p {
+    font-size: larger;
 }

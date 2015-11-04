@@ -59,13 +59,17 @@ function addTotals() {
     $("#averagesContainer").empty();
     var averageSalary = (totalSalary/totalEmployees),
         averageYears = (totalYears/totalEmployees);
-    var ep = "<div class='well col-lg-3'>" +
-            "<h3>Averages: </h3>" +
-            "<p>Average Salary: " + averageSalary  + "</p>" +
-            "<p>Average Years at Chem Bros: " + averageYears + "</p>" +
-            "<h3>Totals: </h3>" +
-            "<p>Total Salary: " + totalSalary + "</p>" +
-            "<p>Total Years at Chem Bros: " + totalYears + "</p>" +
+    var ep = "<div class='col-lg-12 jumbotron'>" +
+            "<div class='well col-lg-6'>" +
+                "<h3>Averages: </h3>" +
+                "<p>Average Salary: " + averageSalary  + "</p>" +
+                "<p>Average Years at Chem Bros: " + averageYears + "</p>" +
+            "</div>" +
+            "<div class='well col-lg-6'>" +
+                "<h3>Totals: </h3>" +
+                 "<p>Total Salary: " + totalSalary + "</p>" +
+                    "<p>Total Years at Chem Bros: " + totalYears + "</p>" +
+            "</div>" +
             "</div>";
     $("#averagesContainer").append(ep);
 
@@ -89,7 +93,9 @@ function freezeEmployee() {
     var frozenId = {"salary" : $(this).data('salary'), "years" : $(this).data('years')};
 
     $(this).parent().toggleClass('frozenActive');
-    if ($(this).parent().hasClass('.frozenActive')) {
+    console.log($(this).parent().hasClass('frozenActive'));
+
+    if ($(this).parent().hasClass('frozenActive')) {
         totalSalary -= frozenId.salary;
         totalYears -= frozenId.years;
         totalEmployees--;

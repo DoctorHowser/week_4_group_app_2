@@ -31,6 +31,10 @@ router.get('/data', function(req, res) {
 });
 
 router.post('/data', function(req, res){
+    Tank.findByIdAndUpdate(id, { $set: { size: 'large' }}, function (err, tank) {
+        if (err) return handleError(err);
+        res.send(tank);
+    });
     //handle promoting ajax
     res.send('post route accessed');
 });
