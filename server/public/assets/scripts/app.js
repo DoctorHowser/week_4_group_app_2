@@ -87,11 +87,20 @@ function deleteEmployee() {
 function freezeEmployee() {
 
     var frozenId = {"salary" : $(this).data('salary'), "years" : $(this).data('years')};
+
     $(this).parent().toggleClass('frozenActive');
-    totalSalary -= frozenId.salary;
-    totalYears -= frozenId.years;
-    totalEmployees--;
-    addTotals();
+    if ($(this).parent().hasClass('.frozenActive')) {
+        totalSalary -= frozenId.salary;
+        totalYears -= frozenId.years;
+        totalEmployees--;
+        addTotals();
+    } else {
+        totalSalary += frozenId.salary;
+        totalYears += frozenId.years;
+        totalEmployees++;
+        addTotals();
+    }
+
 }
 
 //function promoteEmployee() {
