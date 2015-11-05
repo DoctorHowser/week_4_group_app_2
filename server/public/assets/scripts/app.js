@@ -94,7 +94,6 @@ function deleteEmployee() {
 }
 
 function freezeEmployee() {
-    console.log('frozen');
 
     var frozenId = {"salary" : $(this).data('salary'), "years" : $(this).data('years')};
 
